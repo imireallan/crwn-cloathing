@@ -11,6 +11,7 @@ import hats from '../../images/hats.jpg';
 console.log(shoes);
 
 export const Directory = () => {
+    // eslint-disable-next-line no-unused-vars
     const [sections, setSections] = useState([
         {
             title: 'hats',
