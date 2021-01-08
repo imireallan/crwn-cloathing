@@ -5,7 +5,9 @@ name: CRWN CLOATHING CI/CD WORKFLOW
 
 on:
     push:
-        branches: [deploy]
+        branches: [main]
+    pull_request:
+        branches: [main]
 
 jobs:
     build:
@@ -18,6 +20,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
+              name: 'Checkout source code'
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v1
               with:
@@ -25,3 +28,16 @@ jobs:
             - run: npm i
             - run: npm test
             - run: npm run build
+
+            - name: Deploy to Netlify
+              uses: nwtgck/actions-netlify@v1.1.11
+              with:
+                  # Publish directory
+                  publish-dir: './build'
+                  # Custom deploy message for Netlify
+                  deploy-message: '${{ github.event.head_commit.message }}'
+                  # Production branch
+                  production-branch: main
+              env:
+                  NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+                  NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
