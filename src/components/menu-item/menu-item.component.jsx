@@ -1,7 +1,7 @@
 import { withRouter, useHistory } from 'react-router-dom';
 import './menu-item.styles.scss';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => {
+export const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => {
     const history = useHistory();
     return (
         <div
