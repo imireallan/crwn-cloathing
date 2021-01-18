@@ -69,3 +69,15 @@
         height: 480px;
     }
 }
+// TODO: Find a way to render 
+// different images depending on the viewport size
+
+// @media (min-width: 1200px) {
+//     .menu-item {
+//         height: 400px;
+//         &.large {
+//             border: 2px solid red;
+//             height: 680px;
+//         }
+//     }
+// }
